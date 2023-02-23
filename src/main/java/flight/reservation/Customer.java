@@ -13,6 +13,7 @@ public class Customer {
     private String email;
     private String name;
     private List<Order> orders;
+    private boolean isSubscriber;
 
     public Customer(String name, String email) {
         this.name = name;
@@ -74,6 +75,12 @@ public class Customer {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    public notify(){
+        if (isSubscriber) {
+            System.out.println("Sending notification to " + email);
+        }
     }
 
 }

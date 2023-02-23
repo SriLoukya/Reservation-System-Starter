@@ -30,4 +30,11 @@ public class PassengerPlane {
         }
     }
 
+    public sendNotification(List customers) {
+        for (Customer customer : customers) {
+            if (customer.isSubscriber) {
+                // send notification
+            }
+        }
+    }
 }
