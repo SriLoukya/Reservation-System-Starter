@@ -161,7 +161,7 @@ public class ScenarioTest {
             void thenThePaymentAndBookingShouldNotSucceed() {
                 ScheduledFlight scheduledFlight = schedule.searchScheduledFlight(flight.getNumber());
                 FlightOrder order = customer.createOrder(Arrays.asList("Max"), Arrays.asList(scheduledFlight), 100);
-                assertThrows(IllegalStateException.class, () -> order.processOrderWithCreditCard(creditCard));
+                assertThrows(IllegalStateException.class, () -> order.payCreditCard(creditCard));
                 assertFalse(order.isClosed());
             }
         }
@@ -180,7 +180,7 @@ public class ScenarioTest {
             void thenTheBookingShouldNotSucceed() {
                 ScheduledFlight scheduledFlight = schedule.searchScheduledFlight(flight.getNumber());
                 FlightOrder order = customer.createOrder(Arrays.asList("Max"), Arrays.asList(scheduledFlight), 100);
-                assertThrows(IllegalStateException.class, () -> order.processOrderWithCreditCard(creditCard));
+                assertThrows(IllegalStateException.class, () -> order.payCreditCard(creditCard));
                 assertFalse(order.isClosed());
             }
         }
@@ -200,7 +200,11 @@ public class ScenarioTest {
             void thenTheBookingShouldSucceed() throws NoSuchFieldException {
                 ScheduledFlight scheduledFlight = schedule.searchScheduledFlight(flight.getNumber());
                 FlightOrder order = customer.createOrder(Arrays.asList("Max"), Arrays.asList(scheduledFlight), 100);
-                boolean processed = order.processOrderWithCreditCard(creditCard);
+                // chain of respsibilities for payment
+
+
+
+                boolean processed = order.payCreditCard(creditCard);
                 assertTrue(processed);
                 assertTrue(order.isClosed());
                 assertEquals(order, customer.getOrders().get(0));
