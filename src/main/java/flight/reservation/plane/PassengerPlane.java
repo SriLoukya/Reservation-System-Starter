@@ -5,8 +5,16 @@ public class PassengerPlane {
     public String model;
     public int passengerCapacity;
     public int crewCapacity;
+    public int dieselRequired;
+    public boolean needRepair = false;
+    public int maxAltitude;
 
-    public PassengerPlane(String model) {
+    public void print() {
+        System.out.println("PassengerPlane: " + getName() + ", Price: " + getPrice() + ", Max Range: " + maxRange);
+    }
+    public PassengerPlane(String model, double price, int maxAltitude) {
+        super(model, price);
+        this.maxAltitude = maxAltitude;
         this.model = model;
         switch (model) {
             case "A380":
@@ -36,5 +44,21 @@ public class PassengerPlane {
                 // send notification
             }
         }
+    }
+
+    public setDieselRequired(int dieselRequired) {
+        this.dieselRequired = dieselRequired;
+    }
+
+    public int getDieselRequired() {
+        return dieselRequired;
+    }
+
+    public void setNeedRepair(boolean needRepair) {
+        this.needRepair = true;
+    }
+
+    public boolean isNeedRepair() {
+        return needRepair;
     }
 }

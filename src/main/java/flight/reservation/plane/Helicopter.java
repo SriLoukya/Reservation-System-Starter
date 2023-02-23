@@ -1,10 +1,17 @@
 package flight.reservation.plane;
 
-public class Helicopter {
+public class Helicopter extends Flight{
     private final String model;
     private final int passengerCapacity;
+    private int maxAltitude;
 
-    public Helicopter(String model) {
+    public void print() {
+        System.out.println("Helicopter: " + getName() + ", Price: " + getPrice() + ", Max Altitude: " + maxAltitude);
+    }
+
+    public Helicopter(String model, double price, int maxAltitude) {
+        super(model, price);
+        this.maxAltitude = maxAltitude;
         this.model = model;
         if (model.equals("H1")) {
             passengerCapacity = 4;
