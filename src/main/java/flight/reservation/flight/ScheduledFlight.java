@@ -4,7 +4,7 @@ import flight.reservation.Airport;
 import flight.reservation.Passenger;
 import flight.reservation.plane.Helicopter;
 import flight.reservation.plane.PassengerDrone;
-import flight.reservation.plane.PassengerPlane;
+import flight.reservation.plane.PlaneFactory;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,8 +30,8 @@ public class ScheduledFlight extends Flight {
     }
 
     public int getCrewMemberCapacity() throws NoSuchFieldException {
-        if (this.aircraft instanceof PassengerPlane) {
-            return ((PassengerPlane) this.aircraft).crewCapacity;
+        if (this.aircraft instanceof PlaneFactory) {
+            return ((PlaneFactory) this.aircraft).crewCapacity;
         }
         if (this.aircraft instanceof Helicopter) {
             return 2;
@@ -51,8 +51,8 @@ public class ScheduledFlight extends Flight {
     }
 
     public int getCapacity() throws NoSuchFieldException {
-        if (this.aircraft instanceof PassengerPlane) {
-            return ((PassengerPlane) this.aircraft).passengerCapacity;
+        if (this.aircraft instanceof PlaneFactory) {
+            return ((PlaneFactory) this.aircraft).passengerCapacity;
         }
         if (this.aircraft instanceof Helicopter) {
             return ((Helicopter) this.aircraft).getPassengerCapacity();

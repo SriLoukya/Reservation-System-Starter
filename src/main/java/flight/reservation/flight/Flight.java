@@ -3,7 +3,7 @@ package flight.reservation.flight;
 import flight.reservation.Airport;
 import flight.reservation.plane.Helicopter;
 import flight.reservation.plane.PassengerDrone;
-import flight.reservation.plane.PassengerPlane;
+import flight.reservation.plane.PlaneFactory;
 
 import java.util.Arrays;
 
@@ -31,8 +31,8 @@ public class Flight {
     private boolean isAircraftValid(Airport airport) {
         return Arrays.stream(airport.getAllowedAircrafts()).anyMatch(x -> {
             String model;
-            if (this.aircraft instanceof PassengerPlane) {
-                model = ((PassengerPlane) this.aircraft).model;
+            if (this.aircraft instanceof PlaneFactory) {
+                model = ((PlaneFactory) this.aircraft).model;
             } else if (this.aircraft instanceof Helicopter) {
                 model = ((Helicopter) this.aircraft).getModel();
             } else if (this.aircraft instanceof PassengerDrone) {
